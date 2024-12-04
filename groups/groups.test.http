@@ -1,0 +1,94 @@
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI3NWNlNTA0NmY2MGNiMTZiZDQ0NWMiLCJlbWFpbCI6ImFzZW0yQG1pdS5lZHUiLCJmdWxsbmFtZSI6ImFzZW0yIiwiaWF0IjoxNzEzOTA2NDQwfQ.Uaw4xw-dXM3x-apuWt1jSU0aaLbAvIJT6gDLZqUQMe8
+
+@GROUP_ID=6627fd5116728465731c9bb9
+
+@MEMBER_ID=66275815fca3ce3922a657cf
+
+@TRANSACTION_ID=6626e5b674f94db5bcf74f82
+
+###
+
+POST http://localhost:3000/groups
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+    "title": "Jordan trip"
+}
+###
+
+GET http://localhost:3000/groups
+Authorization: Bearer {{TOKEN}}
+
+###
+
+GET http://localhost:3000/groups/{{GROUP_ID}}
+Authorization: Bearer {{TOKEN}}
+
+
+###
+
+POST http://localhost:3000/groups/{{GROUP_ID}}/members
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+    "email": "asem@miu.edu"
+}
+
+###
+GET http://localhost:3000/groups?pending=true
+Authorization: Bearer {{TOKEN}}
+
+
+###
+GET http://localhost:3000/groups/{{GROUP_ID}}/members/{{MEMBER_ID}}
+Authorization: Bearer {{TOKEN}}
+
+###
+GET http://localhost:3000/groups/{{GROUP_ID}}/members/
+Authorization: Bearer {{TOKEN}}
+
+###
+POST http://localhost:3000/groups/{{GROUP_ID}}/transactions
+Authorization: Bearer {{TOKEN}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
+
+Breakfast
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+Cafe at the beach
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="category"
+
+Food
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="amount"
+
+75
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="date"
+
+1686697814
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="receipt"; filename="receipt.jpg"
+Content-Type: image/jpeg
+
+< ./receipt.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+GET http://localhost:3000/groups/{{GROUP_ID}}/transactions/
+Authorization: Bearer {{TOKEN}}
+
+###
+GET http://localhost:3000/groups/{{GROUP_ID}}/transactions/{{TRANSACTION_ID}}
+Authorization: Bearer {{TOKEN}}
+
+
+###
+GET http://localhost:3000/receipts/08d7a23d0cf8d1d4fccad3ec7ecbdb46

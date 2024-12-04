@@ -1,0 +1,47 @@
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI3NTgxNWZjYTNjZTM5MjJhNjU3Y2YiLCJlbWFpbCI6ImFzZW1AbWl1LmVkdSIsImZ1bGxuYW1lIjoiYXNlbSIsImlhdCI6MTcxMzkwNDEwNn0.1eX3CfzMOxSVB6yeOROADgn61SYW43lkjzTsm_YF99A
+
+###
+POST http://localhost:3000/users/signup
+Content-Type: application/json
+
+{
+    "email":"asem2@miu.edu",
+    "password":"123456",
+    "fullname": "asem alfoqha"
+}
+
+###
+POST http://localhost:3000/users/signin
+Content-Type: application/json
+
+{
+"email":"asem2@miu.edu",
+"password":"123456"
+}
+###
+
+GET http://localhost:3000/users/users-list
+Authorization: Bearer {{TOKEN}}
+
+###
+
+PUT  http://localhost:3000/users
+Authorization: Bearer {{TOKEN}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="fullname"
+
+asem fullname
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="email"
+
+asem@miu.edu
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="receipt.jpg"
+Content-Type: image/jpeg
+
+< ./receipt.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
